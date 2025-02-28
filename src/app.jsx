@@ -25,6 +25,12 @@ export function App() {
   const [pickedWord, setPickedWord] = useState("")
   const [pickedCategory, setPickedCategory] = useState("")
   const [letters, setLetters] = useState([])
+
+  const [guessedLetters, setGessedLetters] = useState([])
+  const [wrongLetters, setWrongLetters] = useState([])
+  const [guesses, setGuesses] = useState(5)
+  const [score, setScore] = useState(0)
+
   
   console.log(words)
 
@@ -43,7 +49,7 @@ export function App() {
   // pick word and pick Category
   const {word, category} = pickWordAndCategory()
   let wordLetters = word.split("")
-  wordLetters = wordLetters.map((letter) => letter.toLowerCase())
+  wordLetters = wordLetters.map((letterMap) => letterMap.toLowerCase())
 
   console.log(category, word)
   console.log(wordLetters)
@@ -53,14 +59,27 @@ export function App() {
   setPickedCategory(category)
   setLetters(wordLetters)
 
-
     setGameStage(stages[1].name)
   }
 
   //process the letter input
 
-  const verifyLetter = () => {
-    setGameStage(stages[2].name)
+  const verifyLetter = (letter) => {
+    const normalizeLetter = letter.toLowerCase()
+    if (
+      guessedLetters.includes(normalizeLetter) || 
+      wrongLetters.includes(normalizeLetter)
+    ) {
+      return;
+    }
+
+/*     if (letter.includes(normalizeLetter)) {
+      setGessedLetters((atualGessedLetters))
+    } else {
+
+    } */
+
+    console.log(letter)
   }
 
   const retry = () => {
@@ -70,7 +89,17 @@ export function App() {
   return (
     <div className="App">
       {gameStage === "start" && <StartScreen startGame={startGame}/>}
-      {gameStage === "game" && <Game verifyLetter={verifyLetter}/>}
+      {gameStage === "game" && 
+      <Game 
+        verifyLetter={verifyLetter}
+        pickedWord={pickedWord}
+        pickedCategory={pickedCategory}
+        letters={letters}
+        guessedLetters={guessedLetters}
+        wrongLetters={wrongLetters}
+        guesses={guesses}
+        score={score}
+      />}
       {gameStage === "end" && <GameOver retry={retry}/>}
     </div>
   )
