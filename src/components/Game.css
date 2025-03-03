@@ -11,20 +11,20 @@
 }
 
 .wordContainer {
-    margin: 1.5em auto;
-    padding: 1em;
-    border: 4px solid #ecfa11;
+    margin: 1.5em;
+    padding: 1.5em;
+    border: 7px solid #ecfa11;
     display: flex;
 }
 
 .letter, .blankSquare {
-    font-size: 1.5em;
+    font-size: 1em;
     line-height: 1.5;
     border: 2px solid #000;
-    height: 1.5em;
-    width: 1.5em;
+    height: 1.7em;
+    width: 2em;
     text-transform: uppercase;
-    background-color: #fff;
+    background-color: #ffffff;
     color: #000;
     font-weight: bold;
 }

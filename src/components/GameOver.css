@@ -1,0 +1,14 @@
+.gameOver h1 {
+    font-size: 1.5em;
+}
+
+.points, .text-points {
+    
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 2;
+}
+
+.points {
+    color: #ecfa11;
+}

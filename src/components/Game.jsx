@@ -20,7 +20,6 @@ const Game = ({
         setLetter("")
         letterInputRef.current.focus()
     }
-    console.log(letters)
   return (
     <div className="game">
         <p className="point">
@@ -31,11 +30,15 @@ const Game = ({
         <p>Você ainda tem {guesses} tentativa(s).</p>
         
         <div className="wordContainer">
-            {letters.map((letter, i) => {
-                guessedLetters.includes(letter) ? 
-                (<span key={i} className="letter">{letter}</span>) :
-                (<span key={i} className="blankSquare"></span>)
-            })}
+            {letters.map((letter, i) =>
+            guessedLetters.includes(letter) ? (
+                <span key={i} className="letter">
+                {letter}
+                </span>
+            ) : (
+                <span key={i} className="blankSquare"></span>
+            )
+            )}
         </div>
         <div className="letterContainer">
             <p>Tente advinhar uma letra da Palavra: </p>
@@ -55,10 +58,9 @@ const Game = ({
 
             <div className="wrongLettersContainer">
                 <p>Letras já utilizadas:</p>
-                {wrongLetters.map((letter, i) => { 
-                (<span key={i} >{letter}, </span>) 
-                })}
-
+                {wrongLetters.map((letter, i) => (
+                <span key={i}>{letter}, </span>
+                ))}
             </div>
         </div>
         {/* <h1>Game</h1>
