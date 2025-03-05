@@ -11,7 +11,7 @@ const Game = ({
     guesses,
     score,
 }) => {
-    const [letter, setLetter] = useState()
+    const [letter, setLetter] = useState("")
     const letterInputRef = useRef(null)
 
     const handleSubmit = (e) => {
@@ -46,7 +46,7 @@ const Game = ({
                 <input 
                 type="text" 
                 name="letter" 
-                maxLength="1" 
+                maxLength={1}
                 required
                 onChange={(e) => setLetter(e.target.value)}
                 value={letter}
@@ -63,10 +63,6 @@ const Game = ({
                 ))}
             </div>
         </div>
-        {/* <h1>Game</h1>
-        <div>
-            <button onClick={verifyLetter}>Finalizar o Jogo</button>
-        </div> */}
     </div>
   )
 }
